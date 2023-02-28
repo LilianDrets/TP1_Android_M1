@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Le Sushi yougoslave"
+        android:text="Le Resto"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:gravity="center"
         android:background="#003893"
