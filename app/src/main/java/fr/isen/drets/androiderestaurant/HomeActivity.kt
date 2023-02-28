@@ -3,6 +3,7 @@ package fr.isen.drets.androiderestaurant
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 
@@ -35,5 +36,10 @@ class HomeActivity : AppCompatActivity() {
         textDesserts.setOnClickListener {
             createListeActivity("Desserts", "ListeDesserts")
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.v("HomeActivity", "Destruction H de HomeActivity");
     }
 }
