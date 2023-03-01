@@ -1,22 +1,38 @@
 package fr.isen.drets.androiderestaurant
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ListAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
 class ListeActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liste)
 
-        /*val Titre = intent.getStringExtra("Titre")
-        val Liste = intent.getStringExtra("Liste")
+        val Titre = intent.getStringExtra("Titre")
+        val textViewTitre = findViewById<TextView>(R.id.TitreListe)
 
-        val titreListe = findViewById<TextView>(R.id.TitreListe)
-        val liste = findViewById<TextView>(R.id.Liste)
+        var Liste: List<String> = emptyList()
+        if(Titre == "Entrees") {
+            Liste = resources.getStringArray(R.array.Entrees).toList()
+            textViewTitre.setText("Entrées")
 
-        titreListe.setText(Titre)
-        liste.setText(Liste)*/
+        }
+        else if (Titre == "Desserts") {
+            Liste = resources.getStringArray(R.array.Desserts).toList()
+            textViewTitre.setText("Desserts")
+        }
+        else if (Titre == "Plats") {
+            Liste = resources.getStringArray(R.array.Plats).toList()
+            textViewTitre.setText("Plats")
+        }
 
+        val recyclerViewListe = findViewById<RecyclerView>(R.id.Liste)
+        val adapterListe = ListeAdapter(Liste)
+        recyclerViewListe.adapter = adapterListe
     }
 }

@@ -13,17 +13,18 @@
         android:text="Entrées"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:gravity="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         />
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Liste"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:text="Liste\nListe"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/TitreListe"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TitreListe"
+        tools:listitem="@layout/itemliste" />
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
