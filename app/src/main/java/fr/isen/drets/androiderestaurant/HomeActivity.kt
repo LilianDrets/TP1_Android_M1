@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+//import fr.isen.drets.androiderestaurant.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
+
+    //private lateinit var binding: ActivityHomeBinding
 
     fun createListeActivity(Titre : String) {
         val listeActivity = Intent(this, ListeActivity::class.java)
@@ -19,10 +22,13 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
+        //binding = ActivityHomeBinding.inflate(layoutInflater)
+        //setContentView(binding.root)
         val textEntrees = findViewById<TextView>(R.id.textEntrees)
         val textPlats = findViewById<TextView>(R.id.textPlats)
         val textDesserts = findViewById<TextView>(R.id.textDesserts)
+
+        //binding.starters.setOnClickListener {
 
         textEntrees.setOnClickListener {
             createListeActivity("Entrees")

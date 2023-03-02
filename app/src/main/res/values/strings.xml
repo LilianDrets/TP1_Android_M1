@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">androidrestaurant</string>
     <string-array name="Entrees">
         <item>Entrée 1</item>
         <item>Entrée 2</item>

@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ListeActivity : AppCompatActivity() {
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liste)
@@ -35,4 +34,6 @@ class ListeActivity : AppCompatActivity() {
         val adapterListe = ListeAdapter(Liste)
         recyclerViewListe.adapter = adapterListe
     }
+
+
 }
