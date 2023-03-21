@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         //binding.starters.setOnClickListener {
 
         textEntrees.setOnClickListener {
-            createListeActivity("Entrees")
+            createListeActivity("Entrées")
         }
 
         textPlats.setOnClickListener {
