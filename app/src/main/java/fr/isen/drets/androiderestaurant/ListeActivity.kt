@@ -1,18 +1,14 @@
 package fr.isen.drets.androiderestaurant
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.Response
 import com.google.gson.Gson
 import org.json.JSONObject
 
@@ -70,7 +66,9 @@ class ListeActivity : AppCompatActivity() {
         val Titre = intent.getStringExtra("Titre")
         val textViewTitre = findViewById<TextView>(R.id.TitreListe)
 
-        var Liste: MutableList<String> = mutableListOf()
+        var ListeNom: MutableList<String> = mutableListOf()
+        val ListePrix : MutableList<List<Price>> = mutableListOf()
+        val ListeURLImage : MutableList<List<String>> = mutableListOf()
 
         if(Titre == "Entrées") {
             //Liste = resources.getStringArray(R.array.Entrees).toList()
@@ -98,12 +96,15 @@ class ListeActivity : AppCompatActivity() {
             for (data in rep.data) {
                 if (data.name_fr == Titre) {
                     for (item in data.items) {
-                        Liste.add(item.name_fr);
+                        ListeNom.add(item.name_fr);
+                        ListePrix.add(item.prices)
+                        ListeURLImage.add(item.images)
                     }
+
                 }
             }
             val recyclerViewListe = findViewById<RecyclerView>(R.id.Liste)
-            val adapterListe = ListeAdapter(Liste)
+            val adapterListe = ListeAdapter(ListeNom, ListePrix, ListeURLImage)
             recyclerViewListe.adapter = adapterListe
         }, { error ->
             Log.w("TAG", "RESPONSE IS $error")
