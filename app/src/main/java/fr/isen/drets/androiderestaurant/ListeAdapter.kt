@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 
-class ListeAdapter(private val ListeTitre: List<String>, private val ListePrix: List<List<ListeActivity.Price>>, private val ListeURLImage: List<List<String>>) :
+class ListeAdapter(private val listeItem: List<ListeActivity.Item>) :
     RecyclerView.Adapter<ListeAdapter.ListeHolder>() {
     class ListeHolder(vueItemListe: View) : RecyclerView.ViewHolder(vueItemListe) {
-        val itemListe: TextView
+        val titreListe: TextView
         val imageListe: ImageView
         val prixListe: TextView
         init {
-            itemListe = itemView.findViewById(R.id.itemListe)
+            titreListe = itemView.findViewById(R.id.itemListe)
             imageListe = itemView.findViewById(R.id.imagePlat)
             prixListe = itemView.findViewById(R.id.Textprix)
         }
@@ -29,29 +29,29 @@ class ListeAdapter(private val ListeTitre: List<String>, private val ListePrix: 
     }
 
     override fun onBindViewHolder(holder: ListeHolder, position: Int) {
-        val item = ListeTitre[position]
-        holder.itemListe.text = item
+        val item = listeItem[position]
+        holder.titreListe.text = item.name_fr
+
         var prix = ""
-        for (price in ListePrix[position]) {
-            prix = "Taille: "+price.size+" - Prix: "+price.price+"\n"
+        for (price in item.prices) {
+            prix = prix+"Taille: "+price.size+" - Prix: "+price.price+"\n"
         }
         holder.prixListe.text = prix
 
         try {
-            Picasso.get().load(ListeURLImage[position][0]).into(holder.imageListe)
+            Picasso.get().load(item.images[0]).into(holder.imageListe)
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
 
-
         holder.itemView.setOnClickListener {
             val detailsActivityIntent = Intent(holder.itemView.context, DetailsActivity::class.java)
-            detailsActivityIntent.putExtra("NomPlat", item)
+            detailsActivityIntent.putExtra("item", item)
             holder.itemView.context.startActivity(detailsActivityIntent)
         }
     }
 
-    override fun getItemCount(): Int = ListeTitre.size
+    override fun getItemCount(): Int = listeItem.size
 
 }
