@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+
 //import fr.isen.drets.androiderestaurant.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -40,6 +42,14 @@ class HomeActivity : AppCompatActivity() {
 
         textDesserts.setOnClickListener {
             createListeActivity("Desserts")
+        }
+
+        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+        val btnChariot = findViewById<View>(R.id.chariot)
+        btnChariot.setOnClickListener{
+            val pannierActivite = Intent(this, Panier_Activity::class.java)
+            startActivity(pannierActivite)
         }
     }
 

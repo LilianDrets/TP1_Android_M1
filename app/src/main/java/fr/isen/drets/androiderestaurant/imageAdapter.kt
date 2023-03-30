@@ -16,7 +16,11 @@ class ImageAdapter(private val context: Context, private val images: List<String
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Picasso.get().load(images[position]).into(holder.image)
+        try {
+            Picasso.get().load(images[position]).into(holder.image)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun getItemCount() = images.size

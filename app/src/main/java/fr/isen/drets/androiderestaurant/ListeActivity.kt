@@ -1,11 +1,14 @@
 package fr.isen.drets.androiderestaurant
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
+import android.view.View
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -173,6 +176,14 @@ class ListeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liste)
+
+        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+        val btnChariot = findViewById<View>(R.id.chariot)
+        btnChariot.setOnClickListener{
+            val pannierActivite = Intent(this, Panier_Activity::class.java)
+            startActivity(pannierActivite)
+        }
 
         val Titre = intent.getStringExtra("Titre")
         val textViewTitre = findViewById<TextView>(R.id.TitreListe)
